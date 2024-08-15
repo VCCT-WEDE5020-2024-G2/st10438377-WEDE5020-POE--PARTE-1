@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Livelife Foundation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eaf2f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .contact-form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .contact-form h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        .contact-form button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .contact-info p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .contact-info a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+
+<div class="contact-form">
+    <h2>Contact Us</h2>
+    <div id="error-message" class="error-message"></div>
+    <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your Name">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your Email">
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject">
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your Message"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="contact-info">
+        <p><strong>Contact Information:</strong></p>
+        <p>Email: <a href="mailto:info@livelifefoundation.org">info@livelifefoundation.org</a></p>
+        <p>Phone: +27 21 123 4567</p>
+        <p>Address: 123 Hope Street, Johannesburg, South Africa, 2000</p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Clear previous error messages
+        document.getElementById('error-message').innerHTML = '';
+
+        // Get form values
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var subject = document.getElementById('subject').value.trim();
+        var message = document.getElementById('message').value.trim();
+
+        // Validate form fields
+        if (name === '') {
+            showError('Please enter your name.');
+            return;
+        }
+
+        if (email === '') {
+            showError('Please enter your email.');
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            showError('Please enter a valid email address.');
+            return;
+        }
+
+        if (subject === '') {
+            showError('Please enter a subject.');
+            return;
+        }
+
+        if (message === '') {
+            showError('Please enter your message.');
+            return;
+        }
+
+        // If validation passes, submit the form (here you can send it to your server)
+        alert('Form submitted successfully!');
+        // You would typically use an AJAX call here to send form data to your backend server.
+    });
+
+    function showError(message) {
+        document.getElementById('error-message').innerHTML = message;
+    }
+
+    function validateEmail(email) {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+</script>
+
+</body>
+</html>
+
